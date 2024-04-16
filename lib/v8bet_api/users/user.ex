@@ -16,7 +16,7 @@ defmodule V8betApi.Users.User do
   @doc false
   def changeset(user, attrs) do
     user
-    |> cast(attrs, [:firstname, :lastname, :msisdn])
-    |> validate_required([:firstname, :lastname, :msisdn])
+    |> cast(attrs, [:account_id, :firstname, :lastname, :msisdn])
+    |> validate_required([:account_id])
   end
 end
