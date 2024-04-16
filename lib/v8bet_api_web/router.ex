@@ -1,4 +1,6 @@
 defmodule V8betApiWeb.Router do
+  alias V8betApiWeb.AccountController
+  alias V8betApiWeb.UserController
   use V8betApiWeb, :router
 
   pipeline :browser do
@@ -39,6 +41,14 @@ defmodule V8betApiWeb.Router do
 
       live_dashboard "/dashboard", metrics: V8betApiWeb.Telemetry
       forward "/mailbox", Plug.Swoosh.MailboxPreview
+    end
+
+    scope "/api" do
+      pipe_through :api
+
+      resources "/accounts", AccountController, except: [:new, :edit]
+
+      resources "/users", UserController, except: [:new, :edit]
     end
   end
 end
