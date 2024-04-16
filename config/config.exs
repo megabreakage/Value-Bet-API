@@ -11,6 +11,10 @@ config :v8bet_api,
   ecto_repos: [V8betApi.Repo],
   generators: [timestamp_type: :utc_datetime, binary_id: true]
 
+config :v8bet_api, V8betApi.Auth.Guardian,
+  issuer: "v8bet_api",
+  secret_key: "+qVnJlniBDYtdAnQI13PS+195C/bOd31bqgcMvpWNlP1EKTHx9AD0GsFyp90rlnV"
+
 # Configures the endpoint
 config :v8bet_api, V8betApiWeb.Endpoint,
   url: [host: "localhost"],

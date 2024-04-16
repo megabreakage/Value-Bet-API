@@ -8,7 +8,8 @@ defmodule V8betApi.Accounts.Account do
     field :email, :string
     field :hash_password, :string
 
-    has_one :user, V8betApi.Users.User # Creates relationship to users module
+    # Creates relationship to users module
+    has_one :user, V8betApi.Users.User
 
     timestamps(type: :utc_datetime)
   end
@@ -21,5 +22,12 @@ defmodule V8betApi.Accounts.Account do
     |> validate_format(:email, ~r/^[^\s]+@[^\s]+$/, message: " must have the @sign and no spaces")
     |> validate_length(:email, max: 160, message: "must be less than 160 characters")
     |> unique_constraint(:email, message: " already exists")
+    |> put_password_hash()
   end
+
+  defp put_password_hash(%Ecto.Changeset{valid?: true, changes: %{hash_password: hash_password}} = changeset) do
+    change(changeset, hash_password: Bcrypt.hash_pwd_salt(hash_password))
+  end
+
+  defp put_password_hash(changeset), do: changeset
 end

@@ -56,6 +56,24 @@ defmodule V8betApi.Accounts do
   end
 
   @doc """
+  Gets a single account.any()
+
+  Returns 'nil' if the Account does not exist.
+  ## Examples
+
+  	iex> get_account_by_email(test@email.com)
+  	%Account{}
+
+  	iex> get_account_by_email(no_account@email.com)
+  	nil
+  """
+  def get_account_by_email(email) do
+    Account
+    |> where(email: ^email)
+    |> Repo.one()
+  end
+
+  @doc """
   Updates a account.
 
   ## Examples

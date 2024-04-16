@@ -35,7 +35,12 @@ defmodule V8betApi.UsersTest do
 
     test "update_user/2 with valid data updates the user" do
       user = user_fixture()
-      update_attrs = %{firstname: "some updated firstname", lastname: "some updated lastname", msisdn: 43}
+
+      update_attrs = %{
+        firstname: "some updated firstname",
+        lastname: "some updated lastname",
+        msisdn: 43
+      }
 
       assert {:ok, %User{} = user} = Users.update_user(user, update_attrs)
       assert user.firstname == "some updated firstname"

@@ -8,7 +8,7 @@ defmodule V8betApi.Users.User do
     field :firstname, :string
     field :lastname, :string
     field :msisdn, :integer
-    belongs_to :account,  V8betApi.Accounts.Account
+    belongs_to :account, V8betApi.Accounts.Account
 
     timestamps(type: :utc_datetime)
   end
