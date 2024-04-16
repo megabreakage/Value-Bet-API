@@ -16,5 +16,8 @@ defmodule V8betApi.Accounts.Account do
     account
     |> cast(attrs, [:email, :hashed_password])
     |> validate_required([:email, :hashed_password])
+    |> validate_format(:email, ~r/^[^\s]+@[^\s]+$/, message: " must have the @sign and no spaces")
+    |> validate_length(:email, max: 160, message: "must be less than 160 characters")
+    |> unique_constraint(:email, message: " already exists")
   end
 end
