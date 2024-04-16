@@ -9,5 +9,7 @@ defmodule V8betApi.Repo.Migrations.CreateAccounts do
 
       timestamps(type: :utc_datetime)
     end
+
+    create unique_index(:accounts, [:email])
   end
 end
