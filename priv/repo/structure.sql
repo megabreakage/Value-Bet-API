@@ -25,7 +25,7 @@ DROP TABLE IF EXISTS `accounts`;
 CREATE TABLE `accounts` (
   `id` binary(16) NOT NULL,
   `email` varchar(255) DEFAULT NULL,
-  `hash_password` varchar(255) DEFAULT NULL,
+  `hashed_password` varchar(255) DEFAULT NULL,
   `inserted_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
@@ -80,6 +80,6 @@ CREATE TABLE `users` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-04-16 12:14:24
+-- Dump completed on 2024-04-16 12:29:00
 INSERT INTO `schema_migrations` (version) VALUES (20240416080605);
 INSERT INTO `schema_migrations` (version) VALUES (20240416083500);
