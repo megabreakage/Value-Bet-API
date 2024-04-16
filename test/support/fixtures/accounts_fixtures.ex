@@ -12,7 +12,7 @@ defmodule V8betApi.AccountsFixtures do
       attrs
       |> Enum.into(%{
         email: "some email",
-        hashed_password: "some hashed_password"
+        hash_password: "some hash_password"
       })
       |> V8betApi.Accounts.create_account()
 

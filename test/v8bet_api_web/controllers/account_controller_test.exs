@@ -7,13 +7,13 @@ defmodule V8betApiWeb.AccountControllerTest do
 
   @create_attrs %{
     email: "some email",
-    hashed_password: "some hashed_password"
+    hash_password: "some hash_password"
   }
   @update_attrs %{
     email: "some updated email",
-    hashed_password: "some updated hashed_password"
+    hash_password: "some updated hash_password"
   }
-  @invalid_attrs %{email: nil, hashed_password: nil}
+  @invalid_attrs %{email: nil, hash_password: nil}
 
   setup %{conn: conn} do
     {:ok, conn: put_req_header(conn, "accept", "application/json")}
@@ -36,7 +36,7 @@ defmodule V8betApiWeb.AccountControllerTest do
       assert %{
                "id" => ^id,
                "email" => "some email",
-               "hashed_password" => "some hashed_password"
+               "hash_password" => "some hash_password"
              } = json_response(conn, 200)["data"]
     end
 
@@ -58,7 +58,7 @@ defmodule V8betApiWeb.AccountControllerTest do
       assert %{
                "id" => ^id,
                "email" => "some updated email",
-               "hashed_password" => "some updated hashed_password"
+               "hash_password" => "some updated hash_password"
              } = json_response(conn, 200)["data"]
     end
 

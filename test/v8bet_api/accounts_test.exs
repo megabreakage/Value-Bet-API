@@ -8,7 +8,7 @@ defmodule V8betApi.AccountsTest do
 
     import V8betApi.AccountsFixtures
 
-    @invalid_attrs %{email: nil, hashed_password: nil}
+    @invalid_attrs %{email: nil, hash_password: nil}
 
     test "list_accounts/0 returns all accounts" do
       account = account_fixture()
@@ -21,11 +21,11 @@ defmodule V8betApi.AccountsTest do
     end
 
     test "create_account/1 with valid data creates a account" do
-      valid_attrs = %{email: "some email", hashed_password: "some hashed_password"}
+      valid_attrs = %{email: "some email", hash_password: "some hash_password"}
 
       assert {:ok, %Account{} = account} = Accounts.create_account(valid_attrs)
       assert account.email == "some email"
-      assert account.hashed_password == "some hashed_password"
+      assert account.hash_password == "some hash_password"
     end
 
     test "create_account/1 with invalid data returns error changeset" do
@@ -34,11 +34,11 @@ defmodule V8betApi.AccountsTest do
 
     test "update_account/2 with valid data updates the account" do
       account = account_fixture()
-      update_attrs = %{email: "some updated email", hashed_password: "some updated hashed_password"}
+      update_attrs = %{email: "some updated email", hash_password: "some updated hash_password"}
 
       assert {:ok, %Account{} = account} = Accounts.update_account(account, update_attrs)
       assert account.email == "some updated email"
-      assert account.hashed_password == "some updated hashed_password"
+      assert account.hash_password == "some updated hash_password"
     end
 
     test "update_account/2 with invalid data returns error changeset" do

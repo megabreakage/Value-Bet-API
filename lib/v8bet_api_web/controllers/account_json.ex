@@ -19,7 +19,7 @@ defmodule V8betApiWeb.AccountJSON do
     %{
       id: account.id,
       email: account.email,
-      hashed_password: account.hashed_password
+      hash_password: account.hash_password
     }
   end
 end
