@@ -8,6 +8,8 @@ defmodule V8betApi.Accounts.Account do
     field :email, :string
     field :hashed_password, :string
 
+    has_one :user, V8betApi.Users.User
+
     timestamps(type: :utc_datetime)
   end
 
