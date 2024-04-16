@@ -7,7 +7,7 @@ defmodule V8betApi.Repo.Migrations.CreateUsers do
       add :firstname, :string
       add :lastname, :string
       add :msisdn, :integer
-      add :account_id, references(:accounts, on_delete: :nothing, type: :binary_id)
+      add :account_id, references(:accounts, on_delete: :delete_all, type: :binary_id)
 
       timestamps(type: :utc_datetime)
     end
