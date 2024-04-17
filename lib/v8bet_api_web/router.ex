@@ -3,6 +3,20 @@ defmodule V8betApiWeb.Router do
   alias V8betApiWeb.UserController
   use V8betApiWeb, :router
 
+  use Plug.ErrorHandler
+
+  defp handle_errors(conn, %{reason: %Phoenix.Router.NoRouteError{message: message}}) do
+    conn
+    |> json(%{errors: message})
+    |> halt()
+  end
+
+  defp handle_errors(conn, %{reason: %{message: message}}) do
+    conn
+    |> json(%{errors: message})
+    |> halt()
+  end
+
   pipeline :browser do
     plug :accepts, ["html"]
     plug :fetch_session
@@ -47,6 +61,7 @@ defmodule V8betApiWeb.Router do
       pipe_through :api
 
       resources "/accounts", AccountController, except: [:new, :edit]
+      post "/sign-in", AccountController, :sign_in
 
       resources "/users", UserController, except: [:new, :edit]
     end

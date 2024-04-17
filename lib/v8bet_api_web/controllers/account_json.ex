@@ -22,7 +22,7 @@ defmodule V8betApiWeb.AccountJSON do
   defp data(%Account{} = account) do
     %{
       id: account.id,
-      email: account.email,
+      email: account.email
     }
   end
 
