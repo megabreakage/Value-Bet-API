@@ -1,4 +1,5 @@
 defmodule V8betApiWeb.Router do
+  alias V8betApiWeb.RoleController
   alias V8betApiWeb.AccountController
   alias V8betApiWeb.UserController
   use V8betApiWeb, :router
@@ -64,6 +65,8 @@ defmodule V8betApiWeb.Router do
       post "/sign-in", AccountController, :sign_in
 
       resources "/users", UserController, except: [:new, :edit]
+
+      resources "/roles", RoleController, except: [:new, :edit]
     end
   end
 end
