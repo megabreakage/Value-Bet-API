@@ -11,15 +11,26 @@ defmodule V8betApiWeb.AccountJSON do
   @doc """
   Renders a single account.
   """
-  def show(%{account: account}) do
-    %{data: data(account)}
+  def show(%{account: account, token: token}) do
+    %{data: data(account), token: token}
+  end
+
+  def show_account_token(%{account: account, token: token}) do
+    %{data: json_data(account, token)}
   end
 
   defp data(%Account{} = account) do
     %{
       id: account.id,
       email: account.email,
-      hash_password: account.hash_password
+    }
+  end
+
+  defp json_data(%Account{} = account, token) do
+    %{
+      id: account.id,
+      email: account.email,
+      token: token
     }
   end
 end
