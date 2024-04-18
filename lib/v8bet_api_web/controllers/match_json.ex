@@ -18,6 +18,9 @@ defmodule V8betApiWeb.MatchJSON do
   defp data(%Match{} = match) do
     %{
       id: match.id,
+      game_id: match.game_id,
+      home_team_id: match.home_team_id,
+      away_team_id: match.away_team_id,
       scheduled_at: match.scheduled_at,
       deleted_at: match.deleted_at
     }
