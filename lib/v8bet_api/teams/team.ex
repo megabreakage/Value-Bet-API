@@ -11,13 +11,15 @@ defmodule V8betApi.Teams.Team do
     field :name, :string
     field :game_id, :binary_id
 
+    belongs_to :games, V8betApi.Games.Game
+
     timestamps(type: :utc_datetime)
   end
 
   @doc false
   def changeset(team, attrs) do
     team
-    |> cast(attrs, [:name, :biography, :active, :deleted_at])
+    |> cast(attrs, [:name, :biography, :active, :deleted_at, :game_id])
     |> validate_required([:name, :active, :game_id])
   end
 end
