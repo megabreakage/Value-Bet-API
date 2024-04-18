@@ -15,13 +15,11 @@ defmodule V8betApiWeb.TeamJSON do
     %{data: data(team)}
   end
 
-  def show(%{team: team})
-team
   defp data(%Team{} = team) do
     %{
       id: team.id,
-      name: team.name,
       game_id: team.game_id,
+      name: team.name,
       biography: team.biography,
       active: team.active,
       deleted_at: team.deleted_at
