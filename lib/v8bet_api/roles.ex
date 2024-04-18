@@ -143,4 +143,12 @@ defmodule V8betApi.Roles do
         {:error, :role_assignment_failed}
     end
   end
+
+  def assign_role_v2(user_id, role_name)do
+    case get_role_by_name(role_name) do
+      %Role{} = role ->
+        {:ok, Repo.insert(%UserRoles{user_id: user_id, role_id: role.id})}
+        nil -> {:error, :role_assignment_failed}
+    end
+  end
 end

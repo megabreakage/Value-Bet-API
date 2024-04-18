@@ -3,6 +3,8 @@ defmodule V8betApiWeb.UserController do
 
   alias V8betApi.Users
   alias V8betApi.Users.User
+  alias V8betApi.Roles
+  alias V8betApi.Auth.ErrorResponse
 
   action_fallback V8betApiWeb.FallbackController
 
@@ -30,6 +32,19 @@ defmodule V8betApiWeb.UserController do
 
     with {:ok, %User{} = user} <- Users.update_user(user, user_params) do
       render(conn, :show, user: user)
+    end
+  end
+
+  def assign_role(conn, %{"user_id" => user_id, "role_name" => role_name}) do
+    user = Users.get_user!(user_id)
+    case Roles.assign_role_v2(user.id, role_name) do
+      {:ok, _} ->
+        conn
+        |> put_status(:ok)
+        |> render(:show, user: user)
+
+      {:error, :assign_role_failed} ->
+        raise ErrorResponse.AssignRoleFailed, message: "Assign user a role failed."
     end
   end
 
