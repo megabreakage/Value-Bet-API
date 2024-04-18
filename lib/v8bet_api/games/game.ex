@@ -9,8 +9,6 @@ defmodule V8betApi.Games.Game do
     field :deleted_at, :utc_datetime
     field :name, :string
 
-    belongs_to :user, V8betApi.Users.User
-
     timestamps(type: :utc_datetime)
   end
 
