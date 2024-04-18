@@ -8,7 +8,9 @@ defmodule V8betApi.Users.User do
     field :firstname, :string
     field :lastname, :string
     field :msisdn, :integer
+
     belongs_to :account, V8betApi.Accounts.Account
+    many_to_many :roles, V8betApi.Roles.Role, join_through: "user_roles"
 
     timestamps(type: :utc_datetime)
   end

@@ -8,6 +8,8 @@ defmodule V8betApi.Roles.Role do
     field :name, :string
     field :description, :string
 
+    many_to_many :users, V8betApi.Users.User, join_through: "user_roles"
+
     timestamps(type: :utc_datetime)
   end
 
