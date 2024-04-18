@@ -1,7 +1,6 @@
 defmodule V8betApiWeb.Router do
-  alias V8betApiWeb.RoleController
-  alias V8betApiWeb.AccountController
-  alias V8betApiWeb.UserController
+  alias V8betApiWeb.{RoleController, AccountController, UserController, GameController}
+
   use V8betApiWeb, :router
 
   use Plug.ErrorHandler
@@ -68,6 +67,8 @@ defmodule V8betApiWeb.Router do
       post "/assign-role", UserController, :assign_role
 
       resources "/roles", RoleController, except: [:new, :edit]
+
+      resources "/games", GameController, except: [:new, :edit]
     end
   end
 end
