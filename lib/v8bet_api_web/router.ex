@@ -67,6 +67,7 @@ defmodule V8betApiWeb.Router do
       resources "/users", UserController, except: [:new, :edit]
 
       resources "/roles", RoleController, except: [:new, :edit]
+      post "/assign-role", RoleController, :assign_role
     end
   end
 end
