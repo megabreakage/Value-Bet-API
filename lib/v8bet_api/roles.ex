@@ -4,8 +4,10 @@ defmodule V8betApi.Roles do
   """
 
   import Ecto.Query, warn: false
+  alias V8betApi.Users.UserRoles
   alias V8betApi.Repo
 
+  alias V8betApi.Users.User
   alias V8betApi.Roles.Role
 
   @doc """
@@ -100,5 +102,45 @@ defmodule V8betApi.Roles do
   """
   def change_role(%Role{} = role, attrs \\ %{}) do
     Role.changeset(role, attrs)
+  end
+
+    @doc """
+  Assigns a role to a user.
+
+  ## Examples
+
+      iex> assign_role(user, "admin")
+      {:ok, %User{}}
+
+      iex> assign_role(user, "user")
+      {:ok, %User{}}
+
+      iex> assign_role(user, "invalid_role")
+      {:error, :invalid_role}
+  """
+  def assign_role(%User{} = user, role_name) do
+    case get_role_by_name(role_name) do
+      %Role{} = role ->
+        {:ok, assign_role_to_user(user, role)}
+
+      nil ->
+        {:error, :invalid_role}
+    end
+  end
+
+  # Fetch role by its name
+  defp get_role_by_name(role_name) do
+    Repo.get_by(Role, name: role_name)
+  end
+
+  # Assign role to a user
+  defp assign_role_to_user(user, role) do
+    case Repo.insert(%UserRoles{user_id: user.id, role_id: role.id}) do
+      {:ok, _} ->
+        {:ok, user}
+
+      _ ->
+        {:error, :role_assignment_failed}
+    end
   end
 end

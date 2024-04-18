@@ -102,4 +102,8 @@ defmodule V8betApi.Users do
   def change_user(%User{} = user, attrs \\ %{}) do
     User.changeset(user, attrs)
   end
+
+  def get_user_role(id) do
+    #
+  end
 end
