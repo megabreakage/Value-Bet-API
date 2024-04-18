@@ -18,6 +18,6 @@ defmodule V8betApi.Teams.Team do
   def changeset(team, attrs) do
     team
     |> cast(attrs, [:name, :biography, :active, :deleted_at])
-    |> validate_required([:name, :biography, :active, :deleted_at])
+    |> validate_required([:name, :active, :game_id])
   end
 end
