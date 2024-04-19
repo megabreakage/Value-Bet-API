@@ -19,7 +19,6 @@ defmodule V8betApiWeb.OddTypeJSON do
     %{
       id: odd_type.id,
       name: odd_type.name,
-      deleted_at: odd_type.deleted_at
     }
   end
 end
