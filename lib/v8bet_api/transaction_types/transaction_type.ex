@@ -16,6 +16,6 @@ defmodule V8betApi.TransactionTypes.TransactionType do
   def changeset(transaction_type, attrs) do
     transaction_type
     |> cast(attrs, [:name, :description, :deleted_at])
-    |> validate_required([:name, :description, :deleted_at])
+    |> validate_required([:name])
   end
 end
