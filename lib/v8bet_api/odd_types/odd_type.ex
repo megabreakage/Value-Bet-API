@@ -15,6 +15,6 @@ defmodule V8betApi.OddTypes.OddType do
   def changeset(odd_type, attrs) do
     odd_type
     |> cast(attrs, [:name, :deleted_at])
-    |> validate_required([:name, :deleted_at])
+    |> validate_required([:name])
   end
 end
