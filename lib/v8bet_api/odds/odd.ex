@@ -16,7 +16,7 @@ defmodule V8betApi.Odds.Odd do
   @doc false
   def changeset(odd, attrs) do
     odd
-    |> cast(attrs, [:value, :deleted_at])
-    |> validate_required([:value, :deleted_at])
+    |> cast(attrs, [:match_id, :value, :deleted_at])
+    |> validate_required([:match_id, :value,])
   end
 end
