@@ -18,7 +18,7 @@ defmodule V8betApi.Transactions.Transaction do
   @doc false
   def changeset(transaction, attrs) do
     transaction
-    |> cast(attrs, [:amount, :is_complete])
-    |> validate_required([:amount, :is_complete])
+    |> cast(attrs, [:user_id, :transaction_type_id, :added_by, :updated_by, :amount, :is_complete])
+    |> validate_required([:amount, :user_id, :transaction_type_id])
   end
 end
