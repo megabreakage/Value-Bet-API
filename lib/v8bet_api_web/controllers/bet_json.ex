@@ -18,9 +18,16 @@ defmodule V8betApiWeb.BetJSON do
   defp data(%Bet{} = bet) do
     %{
       id: bet.id,
+      user_id: bet.user_id,
+      match_id: bet.match_id,
+      odd_id: bet.odd_id,
+      bet_status_id: bet.bet_status_id,
       amount: bet.amount,
       start_time: bet.start_time,
-      expires_at: bet.expires_at
+      est_expires_at: bet.est_expires_at,
+      updated_at: bet.updated_at,
+      deleted_at: bet.deleted_at,
+      expired_at: bet.expired_at
     }
   end
 end

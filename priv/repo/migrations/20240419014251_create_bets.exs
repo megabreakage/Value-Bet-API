@@ -15,6 +15,7 @@ defmodule V8betApi.Repo.Migrations.CreateBets do
       add :bet_status_id, references(:bet_statuses, on_delete: :nothing, type: :binary_id)
       add :added_by, references(:users, on_delete: :nothing, type: :binary_id)
       add :updated_by, references(:users, on_delete: :nothing, type: :binary_id)
+      add :deleted_at, :utc_datetime
 
       timestamps(type: :utc_datetime)
     end

@@ -22,7 +22,7 @@ defmodule V8betApi.Bets.Bet do
   @doc false
   def changeset(bet, attrs) do
     bet
-    |> cast(attrs, [:user_id, :match_id, :odd_id, :bet_status_id, :amount, :start_time, :est_expires_at, :expired_at, :updated_by])
+    |> cast(attrs, [:user_id, :match_id, :odd_id, :bet_status_id, :amount, :start_time, :est_expires_at, :expired_at, :updated_by, :deleted_at])
     |> validate_required([:user_id, :match_id, :odd_id, :amount, :start_time, :est_expires_at])
   end
 end
