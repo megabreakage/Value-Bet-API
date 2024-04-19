@@ -19,7 +19,6 @@ defmodule V8betApiWeb.BetStatusJSON do
     %{
       id: bet_status.id,
       name: bet_status.name,
-      deleted_at: bet_status.deleted_at
     }
   end
 end

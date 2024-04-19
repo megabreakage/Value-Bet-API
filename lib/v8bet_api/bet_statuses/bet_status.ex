@@ -15,6 +15,6 @@ defmodule V8betApi.BetStatuses.BetStatus do
   def changeset(bet_status, attrs) do
     bet_status
     |> cast(attrs, [:name, :deleted_at])
-    |> validate_required([:name, :deleted_at])
+    |> validate_required([:name])
   end
 end
