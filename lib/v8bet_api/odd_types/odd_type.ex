@@ -1,11 +1,10 @@
-defmodule V8betApi.Games.Game do
+defmodule V8betApi.OddTypes.OddType do
   use Ecto.Schema
   import Ecto.Changeset
 
   @primary_key {:id, :binary_id, autogenerate: true}
   @foreign_key_type :binary_id
-  schema "games" do
-    field :active, :boolean, default: false
+  schema "odd_types" do
     field :deleted_at, :utc_datetime
     field :name, :string
 
@@ -13,9 +12,9 @@ defmodule V8betApi.Games.Game do
   end
 
   @doc false
-  def changeset(game, attrs) do
-    game
-    |> cast(attrs, [:name, :active, :deleted_at])
-    |> validate_required([:name, :active])
+  def changeset(odd_type, attrs) do
+    odd_type
+    |> cast(attrs, [:name, :deleted_at])
+    |> validate_required([:name, :deleted_at])
   end
 end

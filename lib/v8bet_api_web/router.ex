@@ -1,5 +1,5 @@
 defmodule V8betApiWeb.Router do
-  alias V8betApiWeb.{RoleController, AccountController, UserController, GameController, TeamController, MatchController}
+  alias V8betApiWeb.{RoleController, AccountController, UserController, GameController, TeamController, MatchController, OddTypeController}
 
   use V8betApiWeb, :router
 
@@ -73,6 +73,8 @@ defmodule V8betApiWeb.Router do
       resources "/teams", TeamController, except: [:new, :edit]
 
       resources "/matches", MatchController, except: [:new, :edit]
+
+      resources "/odd_types", OddTypeController, except: [:new, :edit]
     end
   end
 end
