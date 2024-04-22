@@ -1,4 +1,5 @@
 defmodule V8betApiWeb.UserJSON do
+  alias V8betApi.Accounts.Account
   alias V8betApi.Users.User
 
   @doc """
@@ -20,7 +21,15 @@ defmodule V8betApiWeb.UserJSON do
       id: user.id,
       firstname: user.firstname,
       lastname: user.lastname,
-      msisdn: user.msisdn
+      msisdn: user.msisdn,
+      account: data(user.account)
+    }
+  end
+
+  defp data(%Account{} = account) do
+    %{
+      id: account.id,
+      email: account.email
     }
   end
 end

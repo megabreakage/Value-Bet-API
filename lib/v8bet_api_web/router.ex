@@ -3,19 +3,19 @@ defmodule V8betApiWeb.Router do
 
   use V8betApiWeb, :router
 
-  use Plug.ErrorHandler
+  # use Plug.ErrorHandler
 
-  defp handle_errors(conn, %{reason: %Phoenix.Router.NoRouteError{message: message}}) do
-    conn
-    |> json(%{errors: message})
-    |> halt()
-  end
+  # defp handle_errors(conn, %{reason: %Phoenix.Router.NoRouteError{message: message}}) do
+  #   conn
+  #   |> json(%{errors: message})
+  #   |> halt()
+  # end
 
-  defp handle_errors(conn, %{reason: %{message: message}}) do
-    conn
-    |> json(%{errors: message})
-    |> halt()
-  end
+  # defp handle_errors(conn, %{reason: %{message: message}}) do
+  #   conn
+  #   |> json(%{errors: message})
+  #   |> halt()
+  # end
 
   pipeline :browser do
     plug :accepts, ["html"]
