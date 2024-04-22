@@ -36,7 +36,7 @@ defmodule V8betApiWeb.AccountController do
 
   def show(conn, %{"id" => id}) do
     account = Accounts.get_account!(id)
-    render(conn, :show, account: account)
+    render(conn, :show_json, account: account)
   end
 
   def update(conn, %{"id" => id, "account" => account_params}) do

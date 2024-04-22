@@ -1,5 +1,18 @@
 defmodule V8betApiWeb.Router do
-  alias V8betApiWeb.{RoleController, AccountController, UserController, GameController, TeamController, MatchController, OddTypeController, OddController, BetStatusController, BetController, TransactionTypeController, TransactionController}
+  alias V8betApiWeb.{
+    RoleController,
+    AccountController,
+    UserController,
+    GameController,
+    TeamController,
+    MatchController,
+    OddTypeController,
+    OddController,
+    BetStatusController,
+    BetController,
+    TransactionTypeController,
+    TransactionController
+  }
 
   use V8betApiWeb, :router
 

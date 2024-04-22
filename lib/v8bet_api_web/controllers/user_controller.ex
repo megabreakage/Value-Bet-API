@@ -10,6 +10,8 @@ defmodule V8betApiWeb.UserController do
 
   def index(conn, _params) do
     users = Users.list_users()
+
+    IO.inspect(users)
     render(conn, :index, users: users)
   end
 
@@ -37,6 +39,7 @@ defmodule V8betApiWeb.UserController do
 
   def assign_role(conn, %{"user_id" => user_id, "role_name" => role_name}) do
     user = Users.get_user!(user_id)
+
     case Roles.assign_role_v2(user.id, role_name) do
       {:ok, _} ->
         conn

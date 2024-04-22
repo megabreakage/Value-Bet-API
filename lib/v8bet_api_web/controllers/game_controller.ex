@@ -15,7 +15,7 @@ defmodule V8betApiWeb.GameController do
     with {:ok, %Game{} = game} <- Games.create_game(game_params) do
       conn
       |> put_status(:created)
-      |> put_resp_header("location", ~p"/api/games/#{game}")
+      # |> put_resp_header("location", ~p"/api/games/#{game}")
       |> render(:show, game: game)
     end
   end

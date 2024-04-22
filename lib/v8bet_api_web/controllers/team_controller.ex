@@ -15,7 +15,7 @@ defmodule V8betApiWeb.TeamController do
     with {:ok, %Team{} = team} <- Teams.create_team(team_params) do
       conn
       |> put_status(:created)
-      |> put_resp_header("location", ~p"/api/teams/#{team}")
+      # |> put_resp_header("location", ~p"/api/teams/#{team}")
       |> render(:show, team: team)
     end
   end

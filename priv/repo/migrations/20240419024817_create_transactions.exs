@@ -7,7 +7,10 @@ defmodule V8betApi.Repo.Migrations.CreateTransactions do
       add :amount, :float
       add :is_complete, :boolean, default: false, null: false
       add :user_id, references(:users, on_delete: :nothing, type: :binary_id)
-      add :transaction_type_id, references(:transaction_types, on_delete: :nothing, type: :binary_id)
+
+      add :transaction_type_id,
+          references(:transaction_types, on_delete: :nothing, type: :binary_id)
+
       add :added_by, references(:users, on_delete: :nothing, type: :binary_id)
       add :updated_by, references(:users, on_delete: :nothing, type: :binary_id)
 

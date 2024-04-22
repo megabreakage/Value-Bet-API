@@ -49,7 +49,10 @@ defmodule V8betApiWeb.OddTypeControllerTest do
   describe "update odd_type" do
     setup [:create_odd_type]
 
-    test "renders odd_type when data is valid", %{conn: conn, odd_type: %OddType{id: id} = odd_type} do
+    test "renders odd_type when data is valid", %{
+      conn: conn,
+      odd_type: %OddType{id: id} = odd_type
+    } do
       conn = put(conn, ~p"/api/odd_types/#{odd_type}", odd_type: @update_attrs)
       assert %{"id" => ^id} = json_response(conn, 200)["data"]
 

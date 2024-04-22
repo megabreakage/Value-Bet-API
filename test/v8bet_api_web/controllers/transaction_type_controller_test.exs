@@ -52,8 +52,13 @@ defmodule V8betApiWeb.TransactionTypeControllerTest do
   describe "update transaction_type" do
     setup [:create_transaction_type]
 
-    test "renders transaction_type when data is valid", %{conn: conn, transaction_type: %TransactionType{id: id} = transaction_type} do
-      conn = put(conn, ~p"/api/transaction_types/#{transaction_type}", transaction_type: @update_attrs)
+    test "renders transaction_type when data is valid", %{
+      conn: conn,
+      transaction_type: %TransactionType{id: id} = transaction_type
+    } do
+      conn =
+        put(conn, ~p"/api/transaction_types/#{transaction_type}", transaction_type: @update_attrs)
+
       assert %{"id" => ^id} = json_response(conn, 200)["data"]
 
       conn = get(conn, ~p"/api/transaction_types/#{id}")
@@ -67,7 +72,9 @@ defmodule V8betApiWeb.TransactionTypeControllerTest do
     end
 
     test "renders errors when data is invalid", %{conn: conn, transaction_type: transaction_type} do
-      conn = put(conn, ~p"/api/transaction_types/#{transaction_type}", transaction_type: @invalid_attrs)
+      conn =
+        put(conn, ~p"/api/transaction_types/#{transaction_type}", transaction_type: @invalid_attrs)
+
       assert json_response(conn, 422)["errors"] != %{}
     end
   end

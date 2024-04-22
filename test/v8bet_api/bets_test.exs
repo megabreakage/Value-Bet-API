@@ -21,7 +21,11 @@ defmodule V8betApi.BetsTest do
     end
 
     test "create_bet/1 with valid data creates a bet" do
-      valid_attrs = %{amount: 120.5, expires_at: ~U[2024-04-18 01:42:00Z], start_time: ~U[2024-04-18 01:42:00Z]}
+      valid_attrs = %{
+        amount: 120.5,
+        expires_at: ~U[2024-04-18 01:42:00Z],
+        start_time: ~U[2024-04-18 01:42:00Z]
+      }
 
       assert {:ok, %Bet{} = bet} = Bets.create_bet(valid_attrs)
       assert bet.amount == 120.5
@@ -35,7 +39,12 @@ defmodule V8betApi.BetsTest do
 
     test "update_bet/2 with valid data updates the bet" do
       bet = bet_fixture()
-      update_attrs = %{amount: 456.7, expires_at: ~U[2024-04-19 01:42:00Z], start_time: ~U[2024-04-19 01:42:00Z]}
+
+      update_attrs = %{
+        amount: 456.7,
+        expires_at: ~U[2024-04-19 01:42:00Z],
+        start_time: ~U[2024-04-19 01:42:00Z]
+      }
 
       assert {:ok, %Bet{} = bet} = Bets.update_bet(bet, update_attrs)
       assert bet.amount == 456.7

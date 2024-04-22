@@ -28,7 +28,8 @@ defmodule V8betApiWeb.BetStatusController do
   def update(conn, %{"id" => id, "bet_status" => bet_status_params}) do
     bet_status = BetStatuses.get_bet_status!(id)
 
-    with {:ok, %BetStatus{} = bet_status} <- BetStatuses.update_bet_status(bet_status, bet_status_params) do
+    with {:ok, %BetStatus{} = bet_status} <-
+           BetStatuses.update_bet_status(bet_status, bet_status_params) do
       render(conn, :show, bet_status: bet_status)
     end
   end

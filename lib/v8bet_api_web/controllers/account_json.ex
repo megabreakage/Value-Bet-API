@@ -5,7 +5,7 @@ defmodule V8betApiWeb.AccountJSON do
   Renders a list of accounts.
   """
   def index(%{accounts: accounts}) do
-    %{data: for(account <- accounts, do: data(account))}
+    %{data: for(account <- accounts, do: account)}
   end
 
   @doc """
@@ -13,6 +13,10 @@ defmodule V8betApiWeb.AccountJSON do
   """
   def show(%{account: account, token: token}) do
     %{data: data(account), token: token}
+  end
+
+  def show_json(%{account: account, token: token}) do
+    %{data: account, token: token}
   end
 
   def show_account_token(%{account: account, token: token}) do

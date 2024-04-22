@@ -18,7 +18,7 @@ defmodule V8betApi.Accounts do
 
   """
   def list_accounts do
-    Repo.all(Account)
+    Repo.all(Account) |> Repo.preload(:user)
   end
 
   @doc """
@@ -35,7 +35,7 @@ defmodule V8betApi.Accounts do
       ** (Ecto.NoResultsError)
 
   """
-  def get_account!(id), do: Repo.get!(Account, id)
+  def get_account!(id), do: Repo.get!(Account, id)  |> Repo.preload(:user)
 
   @doc """
   Creates a account.

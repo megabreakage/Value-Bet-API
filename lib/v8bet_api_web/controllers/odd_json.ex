@@ -20,7 +20,7 @@ defmodule V8betApiWeb.OddJSON do
       id: odd.id,
       value: odd.value,
       added_by: odd.added_by,
-      updated_by: odd.updated_by,
+      updated_by: odd.updated_by
     }
   end
 end

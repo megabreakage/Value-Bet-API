@@ -18,7 +18,7 @@ defmodule V8betApiWeb.OddTypeJSON do
   defp data(%OddType{} = odd_type) do
     %{
       id: odd_type.id,
-      name: odd_type.name,
+      name: odd_type.name
     }
   end
 end
