@@ -2,7 +2,7 @@ defmodule V8betApi.Matches.Match do
   use Ecto.Schema
   import Ecto.Changeset
 
-  @derive {Jason.Encoder, only: [:game, :scheduled_at, :deleted_at, :teams]}
+  @derive {Jason.Encoder, only: [:id, :game, :scheduled_at, :deleted_at, :teams]}
   @primary_key {:id, :binary_id, autogenerate: true}
   @foreign_key_type :binary_id
   schema "matches" do
@@ -20,5 +20,6 @@ defmodule V8betApi.Matches.Match do
     match
     |> cast(attrs, [:game_id, :scheduled_at, :deleted_at])
     |> validate_required([:game_id, :scheduled_at])
+    |> cast_assoc(:game)
   end
 end

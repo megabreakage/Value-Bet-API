@@ -1,5 +1,4 @@
 defmodule V8betApiWeb.TeamJSON do
-
   @doc """
   Renders a list of teams.
   """

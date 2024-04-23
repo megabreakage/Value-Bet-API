@@ -1,5 +1,4 @@
 defmodule V8betApiWeb.GameJSON do
-
   @doc """
   Renders a list of games.
   """

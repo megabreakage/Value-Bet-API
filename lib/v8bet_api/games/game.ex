@@ -14,7 +14,6 @@ defmodule V8betApi.Games.Game do
     has_many :matches, V8betApi.Matches.Match
 
     timestamps(type: :utc_datetime)
-
   end
 
   @doc false

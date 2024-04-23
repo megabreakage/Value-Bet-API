@@ -4,9 +4,11 @@ defmodule V8betApi.Matches do
   """
 
   import Ecto.Query, warn: false
+
   alias V8betApi.Repo
 
   alias V8betApi.Matches.Match
+  alias V8betApi.Matches.MatchTeam
 
   @doc """
   Returns the list of matches.
@@ -50,9 +52,24 @@ defmodule V8betApi.Matches do
 
   """
   def create_match(attrs \\ %{}) do
+    match_changeset =
     %Match{}
     |> Match.changeset(attrs)
     |> Repo.insert()
+
+    case match_changeset do
+      {:ok, match} ->
+        case set_match_team(match.id, attrs["home_team_id"]) do
+          %Match{} = match ->
+            set_match_team(match.id, attrs["away_team_id"])
+            {:ok, match}
+        end
+    end
+  end
+
+  defp set_match_team(match_id, team_id) do
+    %MatchTeam{}
+    |> Repo.insert(%MatchTeam{match_id: match_id, team_id: team_id})
   end
 
   @doc """

@@ -1,5 +1,4 @@
 defmodule V8betApiWeb.MatchJSON do
-
   @doc """
   Renders a list of matches.
   """
