@@ -20,7 +20,7 @@ defmodule V8betApi.Matches do
 
   """
   def list_matches do
-    Repo.all(Match) |> Repo.preload([:game, :teams])
+    Repo.all(Match) |> Repo.preload([:game, :teams, :odds])
   end
 
   @doc """
@@ -37,7 +37,7 @@ defmodule V8betApi.Matches do
       ** (Ecto.NoResultsError)
 
   """
-  def get_match!(id), do: Repo.get!(Match, id) |> Repo.preload([:game, :teams])
+  def get_match!(id), do: Repo.get!(Match, id) |> Repo.preload([:game, :teams, :odds])
 
   @doc """
   Creates a match.

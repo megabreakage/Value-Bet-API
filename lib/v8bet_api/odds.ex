@@ -18,7 +18,7 @@ defmodule V8betApi.Odds do
 
   """
   def list_odds do
-    Repo.all(Odd)
+    Repo.all(Odd) |> Repo.preload([:odd_types, :match])
   end
 
   @doc """
@@ -35,7 +35,7 @@ defmodule V8betApi.Odds do
       ** (Ecto.NoResultsError)
 
   """
-  def get_odd!(id), do: Repo.get!(Odd, id)
+  def get_odd!(id), do: Repo.get!(Odd, id) |> Repo.preload([:odd_types, :match, :user])
 
   @doc """
   Creates a odd.
