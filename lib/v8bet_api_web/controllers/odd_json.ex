@@ -1,5 +1,4 @@
 defmodule V8betApiWeb.OddJSON do
-
   @doc """
   Renders a list of odds.
   """

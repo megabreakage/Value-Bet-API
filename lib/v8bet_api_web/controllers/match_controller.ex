@@ -13,10 +13,10 @@ defmodule V8betApiWeb.MatchController do
 
   def create(conn, %{"match" => match_params}) do
     with {:ok, %Match{} = match} <- Matches.create_match(match_params) do
-        conn
-        |> put_status(:created)
-        |> put_resp_header("location", ~p"/api/matches/#{match}")
-        |> render(:show, match: match)
+      conn
+      |> put_status(:created)
+      |> put_resp_header("location", ~p"/api/matches/#{match}")
+      |> render(:show, match: match)
     end
   end
 

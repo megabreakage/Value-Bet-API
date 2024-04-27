@@ -12,7 +12,7 @@ defmodule V8betApiWeb.GameController do
   end
 
   def create(conn, %{"game" => game_params}) do
-    with {:ok, %Game{} = game} <- Games.create_game(game_params) do
+    with {:ok, game} <- Games.create_game(game_params) do
       conn
       |> put_status(:created)
       # |> put_resp_header("location", ~p"/api/games/#{game}")

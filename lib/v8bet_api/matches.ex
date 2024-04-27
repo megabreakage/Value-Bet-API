@@ -53,23 +53,23 @@ defmodule V8betApi.Matches do
   """
   def create_match(attrs \\ %{}) do
     match_changeset =
-    %Match{}
-    |> Match.changeset(attrs)
-    |> Repo.insert()
+      %Match{}
+      |> Match.changeset(attrs)
+      |> Repo.insert()
 
     case match_changeset do
       {:ok, match} ->
         case set_match_team(match.id, attrs["home_team_id"]) do
-          %Match{} = match ->
+          {:ok, %MatchTeam{}} = _match_teams ->
             set_match_team(match.id, attrs["away_team_id"])
-            {:ok, match}
+            {:ok, match |> Repo.preload([:odds, teams: :game])}
         end
     end
   end
 
   defp set_match_team(match_id, team_id) do
-    %MatchTeam{}
-    |> Repo.insert(%MatchTeam{match_id: match_id, team_id: team_id})
+    %MatchTeam{match_id: match_id, team_id: team_id}
+    |> Repo.insert()
   end
 
   @doc """
