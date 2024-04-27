@@ -4,6 +4,8 @@ defmodule V8betApi.Odds do
   """
 
   import Ecto.Query, warn: false
+  alias V8betApi.OddTypes
+  alias V8betApi.OddTypes.OddType
   alias V8betApi.Repo
 
   alias V8betApi.Odds.Odd
@@ -18,7 +20,8 @@ defmodule V8betApi.Odds do
 
   """
   def list_odds do
-    Repo.all(Odd) |> Repo.preload([:odd_type, :match])
+    Repo.all(Odd)
+    |> Repo.preload(:odd_type)
   end
 
   @doc """
@@ -35,7 +38,8 @@ defmodule V8betApi.Odds do
       ** (Ecto.NoResultsError)
 
   """
-  def get_odd!(id), do: Repo.get!(Odd, id) |> Repo.preload([:odd_type, :match, :user])
+  def get_odd!(id), do: Repo.get!(Odd, id)
+  |> Repo.preload(:odd_type)
 
   @doc """
   Creates a odd.
@@ -50,9 +54,17 @@ defmodule V8betApi.Odds do
 
   """
   def create_odd(attrs \\ %{}) do
-    %Odd{}
-    |> Odd.changeset(attrs)
-    |> Repo.insert()
+    {:ok, odd} =
+      %Odd{}
+      |> Odd.changeset(attrs)
+      |> Repo.insert()
+
+    {:ok,
+     %{
+       id: odd.id,
+       value: odd.value,
+       odd_type_id: odd.odd_type_id
+     }}
   end
 
   @doc """

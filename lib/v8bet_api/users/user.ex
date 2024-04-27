@@ -11,6 +11,7 @@ defmodule V8betApi.Users.User do
     field :msisdn, :integer
 
     belongs_to :account, V8betApi.Accounts.Account
+    has_many :odds, V8betApi.Odds.Odd
     many_to_many :roles, V8betApi.Roles.Role, join_through: "user_roles"
 
     timestamps(type: :utc_datetime)

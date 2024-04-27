@@ -12,10 +12,10 @@ defmodule V8betApiWeb.OddController do
   end
 
   def create(conn, %{"odd" => odd_params}) do
-    with {:ok, %Odd{} = odd} <- Odds.create_odd(odd_params) do
+    with {:ok, odd} <- Odds.create_odd(odd_params) do
       conn
       |> put_status(:created)
-      |> put_resp_header("location", ~p"/api/odds/#{odd}")
+      # |> put_resp_header("location", ~p"/api/odds/#{odd}")
       |> render(:show, odd: odd)
     end
   end

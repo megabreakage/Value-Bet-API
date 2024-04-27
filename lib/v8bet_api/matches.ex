@@ -57,9 +57,10 @@ defmodule V8betApi.Matches do
       |> Match.changeset(attrs)
       |> Repo.insert()
 
-      case match_changeset do
-        {:ok, match} ->
-          home = true
+    case match_changeset do
+      {:ok, match} ->
+        home = true
+
         case set_match_team(match.id, attrs["home_team_id"], home) do
           {:ok, %MatchTeam{}} = _match_teams ->
             set_match_team(match.id, attrs["away_team_id"], !home)
