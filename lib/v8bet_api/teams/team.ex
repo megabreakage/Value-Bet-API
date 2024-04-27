@@ -2,7 +2,7 @@ defmodule V8betApi.Teams.Team do
   use Ecto.Schema
   import Ecto.Changeset
 
-  @derive {Jason.Encoder, only: [:id, :name, :biography, :active, :game_id, :deleted_at]}
+  @derive {Jason.Encoder, only: [:id, :name, :biography, :active, :game_id]}
   @primary_key {:id, :binary_id, autogenerate: true}
   @foreign_key_type :binary_id
   schema "teams" do
