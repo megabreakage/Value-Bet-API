@@ -4,7 +4,6 @@ defmodule V8betApiWeb.OddJSON do
   Renders a list of odds.
   """
   def index(%{odds: odds}) do
-    # %{data: for(odd <- odds, do: data(odd))}
     %{data: for(odd <- odds, do: odd)}
   end
 
@@ -12,7 +11,6 @@ defmodule V8betApiWeb.OddJSON do
   Renders a single odd.
   """
   def show(%{odd: odd}) do
-    # %{data: data(odd)}
     %{data: odd}
   end
 

@@ -21,6 +21,5 @@ defmodule V8betApi.Matches.Match do
     match
     |> cast(attrs, [:game_id, :scheduled_at, :deleted_at])
     |> validate_required([:game_id, :scheduled_at])
-    |> cast_assoc(:game)
   end
 end

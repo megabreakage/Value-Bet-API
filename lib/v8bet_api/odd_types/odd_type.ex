@@ -2,7 +2,7 @@ defmodule V8betApi.OddTypes.OddType do
   use Ecto.Schema
   import Ecto.Changeset
 
-  @derive {Jason.Encoder, only: [:id, :name, :deleted_at]}
+  @derive {Jason.Encoder, only: [:id, :name]}
   @primary_key {:id, :binary_id, autogenerate: true}
   @foreign_key_type :binary_id
   schema "odd_types" do
@@ -17,7 +17,7 @@ defmodule V8betApi.OddTypes.OddType do
   @doc false
   def changeset(odd_type, attrs) do
     odd_type
-    |> cast(attrs, [:name, :deleted_at])
+    |> cast(attrs, [:id, :name, :deleted_at])
     |> validate_required([:name])
   end
 end
