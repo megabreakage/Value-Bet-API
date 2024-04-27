@@ -21,7 +21,10 @@ defmodule V8betApi.MatchesTest do
     end
 
     test "create_match/1 with valid data creates a match" do
-      valid_attrs = %{deleted_at: ~U[2024-04-17 23:41:00Z], scheduled_at: ~U[2024-04-17 23:41:00Z]}
+      valid_attrs = %{
+        deleted_at: ~U[2024-04-17 23:41:00Z],
+        scheduled_at: ~U[2024-04-17 23:41:00Z]
+      }
 
       assert {:ok, %Match{} = match} = Matches.create_match(valid_attrs)
       assert match.deleted_at == ~U[2024-04-17 23:41:00Z]
@@ -34,7 +37,11 @@ defmodule V8betApi.MatchesTest do
 
     test "update_match/2 with valid data updates the match" do
       match = match_fixture()
-      update_attrs = %{deleted_at: ~U[2024-04-18 23:41:00Z], scheduled_at: ~U[2024-04-18 23:41:00Z]}
+
+      update_attrs = %{
+        deleted_at: ~U[2024-04-18 23:41:00Z],
+        scheduled_at: ~U[2024-04-18 23:41:00Z]
+      }
 
       assert {:ok, %Match{} = match} = Matches.update_match(match, update_attrs)
       assert match.deleted_at == ~U[2024-04-18 23:41:00Z]

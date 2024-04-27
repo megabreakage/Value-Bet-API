@@ -19,7 +19,7 @@ defmodule V8betApiWeb.TransactionTypeJSON do
     %{
       id: transaction_type.id,
       name: transaction_type.name,
-      description: transaction_type.description,
+      description: transaction_type.description
     }
   end
 end

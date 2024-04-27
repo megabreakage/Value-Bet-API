@@ -18,7 +18,7 @@ defmodule V8betApi.Users do
 
   """
   def list_users do
-    Repo.all(User)
+    Repo.all(User) |> Repo.preload([:account, :roles])
   end
 
   @doc """
@@ -35,7 +35,13 @@ defmodule V8betApi.Users do
       ** (Ecto.NoResultsError)
 
   """
-  def get_user!(id), do: Repo.get!(User, id)
+  def get_user!(id),
+    do:
+      Repo.get!(User, id)
+      |> Repo.preload([
+        :account,
+        :roles
+      ])
 
   @doc """
   Creates a user.
@@ -101,9 +107,5 @@ defmodule V8betApi.Users do
   """
   def change_user(%User{} = user, attrs \\ %{}) do
     User.changeset(user, attrs)
-  end
-
-  def get_user_role(id) do
-    #
   end
 end

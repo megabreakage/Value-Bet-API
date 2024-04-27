@@ -49,7 +49,10 @@ defmodule V8betApiWeb.BetStatusControllerTest do
   describe "update bet_status" do
     setup [:create_bet_status]
 
-    test "renders bet_status when data is valid", %{conn: conn, bet_status: %BetStatus{id: id} = bet_status} do
+    test "renders bet_status when data is valid", %{
+      conn: conn,
+      bet_status: %BetStatus{id: id} = bet_status
+    } do
       conn = put(conn, ~p"/api/bet_statuses/#{bet_status}", bet_status: @update_attrs)
       assert %{"id" => ^id} = json_response(conn, 200)["data"]
 

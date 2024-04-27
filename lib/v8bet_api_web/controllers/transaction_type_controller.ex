@@ -12,7 +12,8 @@ defmodule V8betApiWeb.TransactionTypeController do
   end
 
   def create(conn, %{"transaction_type" => transaction_type_params}) do
-    with {:ok, %TransactionType{} = transaction_type} <- TransactionTypes.create_transaction_type(transaction_type_params) do
+    with {:ok, %TransactionType{} = transaction_type} <-
+           TransactionTypes.create_transaction_type(transaction_type_params) do
       conn
       |> put_status(:created)
       |> put_resp_header("location", ~p"/api/transaction_types/#{transaction_type}")
@@ -28,7 +29,8 @@ defmodule V8betApiWeb.TransactionTypeController do
   def update(conn, %{"id" => id, "transaction_type" => transaction_type_params}) do
     transaction_type = TransactionTypes.get_transaction_type!(id)
 
-    with {:ok, %TransactionType{} = transaction_type} <- TransactionTypes.update_transaction_type(transaction_type, transaction_type_params) do
+    with {:ok, %TransactionType{} = transaction_type} <-
+           TransactionTypes.update_transaction_type(transaction_type, transaction_type_params) do
       render(conn, :show, transaction_type: transaction_type)
     end
   end

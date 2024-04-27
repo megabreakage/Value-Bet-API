@@ -36,14 +36,19 @@ defmodule V8betApi.BetStatusesTest do
       bet_status = bet_status_fixture()
       update_attrs = %{deleted_at: ~U[2024-04-19 01:23:00Z], name: "some updated name"}
 
-      assert {:ok, %BetStatus{} = bet_status} = BetStatuses.update_bet_status(bet_status, update_attrs)
+      assert {:ok, %BetStatus{} = bet_status} =
+               BetStatuses.update_bet_status(bet_status, update_attrs)
+
       assert bet_status.deleted_at == ~U[2024-04-19 01:23:00Z]
       assert bet_status.name == "some updated name"
     end
 
     test "update_bet_status/2 with invalid data returns error changeset" do
       bet_status = bet_status_fixture()
-      assert {:error, %Ecto.Changeset{}} = BetStatuses.update_bet_status(bet_status, @invalid_attrs)
+
+      assert {:error, %Ecto.Changeset{}} =
+               BetStatuses.update_bet_status(bet_status, @invalid_attrs)
+
       assert bet_status == BetStatuses.get_bet_status!(bet_status.id)
     end
 

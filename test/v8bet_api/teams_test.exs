@@ -21,7 +21,12 @@ defmodule V8betApi.TeamsTest do
     end
 
     test "create_team/1 with valid data creates a team" do
-      valid_attrs = %{active: true, biography: "some biography", deleted_at: ~U[2024-04-17 11:22:00Z], name: "some name"}
+      valid_attrs = %{
+        active: true,
+        biography: "some biography",
+        deleted_at: ~U[2024-04-17 11:22:00Z],
+        name: "some name"
+      }
 
       assert {:ok, %Team{} = team} = Teams.create_team(valid_attrs)
       assert team.active == true
@@ -36,7 +41,13 @@ defmodule V8betApi.TeamsTest do
 
     test "update_team/2 with valid data updates the team" do
       team = team_fixture()
-      update_attrs = %{active: false, biography: "some updated biography", deleted_at: ~U[2024-04-18 11:22:00Z], name: "some updated name"}
+
+      update_attrs = %{
+        active: false,
+        biography: "some updated biography",
+        deleted_at: ~U[2024-04-18 11:22:00Z],
+        name: "some updated name"
+      }
 
       assert {:ok, %Team{} = team} = Teams.update_team(team, update_attrs)
       assert team.active == false

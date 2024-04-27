@@ -35,7 +35,12 @@ defmodule V8betApi.GamesTest do
 
     test "update_game/2 with valid data updates the game" do
       game = game_fixture()
-      update_attrs = %{active: false, deleted_at: ~U[2024-04-18 11:06:00Z], name: "some updated name"}
+
+      update_attrs = %{
+        active: false,
+        deleted_at: ~U[2024-04-18 11:06:00Z],
+        name: "some updated name"
+      }
 
       assert {:ok, %Game{} = game} = Games.update_game(game, update_attrs)
       assert game.active == false

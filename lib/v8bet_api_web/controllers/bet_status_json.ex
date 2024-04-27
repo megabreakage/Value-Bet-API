@@ -18,7 +18,7 @@ defmodule V8betApiWeb.BetStatusJSON do
   defp data(%BetStatus{} = bet_status) do
     %{
       id: bet_status.id,
-      name: bet_status.name,
+      name: bet_status.name
     }
   end
 end

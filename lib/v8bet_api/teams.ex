@@ -18,7 +18,7 @@ defmodule V8betApi.Teams do
 
   """
   def list_teams do
-    Repo.all(Team)
+    Repo.all(Team) |> Repo.preload(:game)
   end
 
   @doc """
@@ -35,7 +35,7 @@ defmodule V8betApi.Teams do
       ** (Ecto.NoResultsError)
 
   """
-  def get_team!(id), do: Repo.get!(Team, id)
+  def get_team!(id), do: Repo.get!(Team, id) |> Repo.preload(:game)
 
   @doc """
   Creates a team.

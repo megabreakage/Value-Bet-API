@@ -104,7 +104,7 @@ defmodule V8betApi.Roles do
     Role.changeset(role, attrs)
   end
 
-    @doc """
+  @doc """
   Assigns a role to a user.
 
   ## Examples
@@ -144,11 +144,13 @@ defmodule V8betApi.Roles do
     end
   end
 
-  def assign_role_v2(user_id, role_name)do
+  def assign_role_v2(user_id, role_name) do
     case get_role_by_name(role_name) do
       %Role{} = role ->
         {:ok, Repo.insert(%UserRoles{user_id: user_id, role_id: role.id})}
-        nil -> {:error, :role_assignment_failed}
+
+      nil ->
+        {:error, :role_assignment_failed}
     end
   end
 end

@@ -6,7 +6,7 @@ defmodule V8betApiWeb.AccountJSON do
   Renders a list of accounts.
   """
   def index(%{accounts: accounts}) do
-    %{data: for(account <- accounts, do: data(account))}
+    %{data: for(account <- accounts, do: account)}
   end
 
   @doc """

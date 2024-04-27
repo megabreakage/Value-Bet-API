@@ -7,14 +7,10 @@ defmodule V8betApi.Repo.Migrations.CreateMatches do
       add :scheduled_at, :utc_datetime
       add :deleted_at, :utc_datetime
       add :game_id, references(:games, on_delete: :delete_all, type: :binary_id)
-      add :home_team_id, references(:teams, on_delete: :delete_all, type: :binary_id)
-      add :away_team_id, references(:teams, on_delete: :delete_all, type: :binary_id)
 
       timestamps(type: :utc_datetime)
     end
 
     create index(:matches, [:game_id])
-    create index(:matches, [:home_team_id])
-    create index(:matches, [:away_team_id])
   end
 end

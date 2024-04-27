@@ -36,14 +36,19 @@ defmodule V8betApi.TransactionsTest do
       transaction = transaction_fixture()
       update_attrs = %{amount: 456.7, is_complete: false}
 
-      assert {:ok, %Transaction{} = transaction} = Transactions.update_transaction(transaction, update_attrs)
+      assert {:ok, %Transaction{} = transaction} =
+               Transactions.update_transaction(transaction, update_attrs)
+
       assert transaction.amount == 456.7
       assert transaction.is_complete == false
     end
 
     test "update_transaction/2 with invalid data returns error changeset" do
       transaction = transaction_fixture()
-      assert {:error, %Ecto.Changeset{}} = Transactions.update_transaction(transaction, @invalid_attrs)
+
+      assert {:error, %Ecto.Changeset{}} =
+               Transactions.update_transaction(transaction, @invalid_attrs)
+
       assert transaction == Transactions.get_transaction!(transaction.id)
     end
 

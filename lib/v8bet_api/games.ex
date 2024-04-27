@@ -18,7 +18,7 @@ defmodule V8betApi.Games do
 
   """
   def list_games do
-    Repo.all(Game)
+    Repo.all(Game) |> Repo.preload(:matches) |> Repo.preload(:teams)
   end
 
   @doc """
@@ -35,7 +35,7 @@ defmodule V8betApi.Games do
       ** (Ecto.NoResultsError)
 
   """
-  def get_game!(id), do: Repo.get!(Game, id)
+  def get_game!(id), do: Repo.get!(Game, id) |> Repo.preload(:matches) |> Repo.preload(:teams)
 
   @doc """
   Creates a game.
