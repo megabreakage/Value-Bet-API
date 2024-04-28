@@ -15,7 +15,7 @@ defmodule V8betApiWeb.BetStatusController do
     with {:ok, %BetStatus{} = bet_status} <- BetStatuses.create_bet_status(bet_status_params) do
       conn
       |> put_status(:created)
-      |> put_resp_header("location", ~p"/api/bet_statuses/#{bet_status}")
+      # |> put_resp_header("location", ~p"/api/bet_statuses/#{bet_status}")
       |> render(:show, bet_status: bet_status)
     end
   end
