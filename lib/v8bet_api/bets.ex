@@ -67,20 +67,22 @@ defmodule V8betApi.Bets do
       |> Bet.changeset(attrs)
       |> Repo.insert()
 
-      # Method 1:
+    # Method 1:
+    bet = bet |> Repo.preload([
+      :bet_status, user: [:account, :roles], match: [:teams, odds: :odd_type]
+    ])
+
     {:ok,
      %{
        id: bet.id,
-       user_id: bet.user_id,
-       match_id: bet.match_id,
-       odd_id: bet.odd_id,
-       bet_status_id: bet.bet_status_id,
+       bet_status: bet.bet_status,
+       user: bet.user,
+       match: bet.match,
        amount: bet.amount,
        start_time: bet.start_time,
        est_expires_at: bet.est_expires_at,
        expired_at: bet.expired_at
      }}
-
 
     # Method 2:
     # bet_with_matches =
@@ -89,6 +91,7 @@ defmodule V8betApi.Bets do
     #     select: %{bet: b, user: u, match: m, odds: o, bet_status: s}
 
     # Query to fetch bets with their match and odds, user & bet_status preloaded
+
     # Method 3:
     # bet_with_matches =
     # from b in Bet,

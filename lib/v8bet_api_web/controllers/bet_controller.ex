@@ -8,7 +8,6 @@ defmodule V8betApiWeb.BetController do
 
   def index(conn, _params) do
     bets = Bets.list_bets()
-    IO.inspect(bets)
     render(conn, :index, bets: bets)
   end
 
