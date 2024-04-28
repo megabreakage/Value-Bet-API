@@ -2,7 +2,7 @@ defmodule V8betApi.Odds.Odd do
   use Ecto.Schema
   import Ecto.Changeset
 
-  @derive {Jason.Encoder, only: [:id, :value, :odd_type]}
+  @derive {Jason.Encoder, only: [:id, :value, :odd_type, :added_by, :updated_by]}
   @primary_key {:id, :binary_id, autogenerate: true}
   @foreign_key_type :binary_id
   schema "odds" do
@@ -13,6 +13,7 @@ defmodule V8betApi.Odds.Odd do
 
     belongs_to :odd_type, V8betApi.OddTypes.OddType
     belongs_to :match, V8betApi.Matches.Match
+    belongs_to :user, V8betApi.Users.User
 
     timestamps(type: :utc_datetime)
   end
