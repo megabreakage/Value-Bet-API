@@ -44,7 +44,7 @@ Follow the steps below to successfully intall the application.
 7. Run the following command to set up your application, create database and run migrations.
 
     ```bash
-    mix get.deps
+    mix deps.get
     ```
     
     ```bash
