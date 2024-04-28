@@ -145,6 +145,24 @@ defmodule V8betApi.Bets do
   end
 
   @doc """
+  Soft Deletes a bet.
+
+  ## Examples
+
+      iex> update_bet(bet, %{field: new_value})
+      {:ok, %Bet{}}
+
+      iex> update_bet(bet, %{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def soft_delete_bet(%Bet{} = bet, attrs) do
+    bet
+    |> Bet.changeset(attrs)
+    |> Repo.update()
+  end
+
+  @doc """
   Returns an `%Ecto.Changeset{}` for tracking bet changes.
 
   ## Examples
