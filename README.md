@@ -63,7 +63,7 @@ Follow the steps below to successfully intall the application.
         iex -S mix phx.server
         ```
 
-9. Access your APIs via the IP generated e.g [127.0.0.1:4000](127.0.0.1:4000) or [localhost:4000](localhost:8000).
+9. Access your APIs via the IP generated e.g [127.0.0.1:4000](http://127.0.0.1:4000) or [localhost:4000](http://localhost:8000).
 
 ---
 
