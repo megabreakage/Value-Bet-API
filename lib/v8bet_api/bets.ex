@@ -68,9 +68,13 @@ defmodule V8betApi.Bets do
       |> Repo.insert()
 
     # Method 1:
-    bet = bet |> Repo.preload([
-      :bet_status, user: [:account, :roles], match: [:teams, odds: :odd_type]
-    ])
+    bet =
+      bet
+      |> Repo.preload([
+        :bet_status,
+        user: [:account, :roles],
+        match: [:teams, odds: :odd_type]
+      ])
 
     {:ok,
      %{
