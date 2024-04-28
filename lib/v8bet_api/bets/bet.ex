@@ -56,4 +56,34 @@ defmodule V8betApi.Bets.Bet do
       :est_expires_at
     ])
   end
+
+  def user_update_changeset(bet, attrs) do
+    bet
+    |> cast(attrs, [
+      :odd_id,
+      :amount,
+      :bet_status_id,
+      :updated_by,
+    ])
+    |> validate_required([
+      :odd_id,
+      :amount,
+      :updated_by
+    ])
+  end
+
+  def admin_update_changeset(bet, attrs) do
+    bet
+    |> cast(attrs, [
+      :start_time,
+      :est_expires_at,
+      :expired_at,
+      :updated_by,
+      :bet_status_id,
+      :updated_by,
+    ])
+    |> validate_required([
+      :updated_by
+    ])
+  end
 end
