@@ -1,13 +1,14 @@
 ---
 Name: V8BET APIs,
-URL: http://localhost:4000
+Description: Practical Trial APIs
+URL: https://github.com/megabreakage/Value-Bet-API
 Authors: Martin Njuguna.
 Initial Date: 15 April 2024.
 ---
 
 # [V8BET APIs](http://localhost:4000)
 
-Practial Trial by Value8!
+Application Programming Interface for Practial Trial, by Value8!
 
 ---
 
