@@ -19,6 +19,11 @@ defmodule V8betApi.Bets do
   """
   def list_bets do
     Repo.all(Bet)
+    |> Repo.preload([
+      :bet_status,
+      user: [:account, :roles],
+      match: [:teams, odds: :odd_type]
+    ])
   end
 
   @doc """
@@ -35,7 +40,14 @@ defmodule V8betApi.Bets do
       ** (Ecto.NoResultsError)
 
   """
-  def get_bet!(id), do: Repo.get!(Bet, id)
+  def get_bet!(id),
+    do:
+      Repo.get!(Bet, id)
+      |> Repo.preload([
+        :bet_status,
+      user: [:account, :roles],
+      match: [:teams, odds: :odd_type]
+      ])
 
   @doc """
   Creates a bet.
@@ -50,9 +62,23 @@ defmodule V8betApi.Bets do
 
   """
   def create_bet(attrs \\ %{}) do
-    %Bet{}
-    |> Bet.changeset(attrs)
-    |> Repo.insert()
+    {:ok, bet} =
+      %Bet{}
+      |> Bet.changeset(attrs)
+      |> Repo.insert()
+
+    {:ok,
+     %{
+       id: bet.id,
+       user_id: bet.user_id,
+       match_id: bet.match_id,
+       odd_id: bet.odd_id,
+       bet_status_id: bet.bet_status_id,
+       amount: bet.amount,
+       start_time: bet.start_time,
+       est_expires_at: bet.est_expires_at,
+       expired_at: bet.expired_at
+     }}
   end
 
   @doc """

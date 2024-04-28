@@ -2,6 +2,17 @@ defmodule V8betApi.Bets.Bet do
   use Ecto.Schema
   import Ecto.Changeset
 
+  @derive {Jason.Encoder,
+           only: [
+             :id,
+             :user,
+             :match,
+             :bet_status,
+             :amount,
+             :start_time,
+             :est_expires_at,
+             :expired_at
+           ]}
   @primary_key {:id, :binary_id, autogenerate: true}
   @foreign_key_type :binary_id
   schema "bets" do
@@ -9,12 +20,13 @@ defmodule V8betApi.Bets.Bet do
     field :est_expires_at, :utc_datetime
     field :expired_at, :utc_datetime
     field :start_time, :utc_datetime
-    field :user_id, :binary_id
-    field :match_id, :binary_id
-    field :odd_id, :binary_id
-    field :bet_status_id, :binary_id
     field :updated_by, :binary_id
     field :deleted_at, :utc_datetime
+
+    belongs_to :user, V8betApi.Users.User
+    belongs_to :match, V8betApi.Matches.Match
+    belongs_to :odd, V8betApi.Odds.Odd
+    belongs_to :bet_status, V8betApi.BetStatuses.BetStatus
 
     timestamps(type: :utc_datetime)
   end
@@ -34,6 +46,14 @@ defmodule V8betApi.Bets.Bet do
       :updated_by,
       :deleted_at
     ])
-    |> validate_required([:user_id, :match_id, :odd_id, :amount, :start_time, :est_expires_at])
+    |> validate_required([
+      :user_id,
+      :match_id,
+      :odd_id,
+      :bet_status_id,
+      :amount,
+      :start_time,
+      :est_expires_at
+    ])
   end
 end

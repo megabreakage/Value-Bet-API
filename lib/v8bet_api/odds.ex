@@ -4,8 +4,6 @@ defmodule V8betApi.Odds do
   """
 
   import Ecto.Query, warn: false
-  alias V8betApi.OddTypes
-  alias V8betApi.OddTypes.OddType
   alias V8betApi.Repo
 
   alias V8betApi.Odds.Odd
@@ -38,8 +36,10 @@ defmodule V8betApi.Odds do
       ** (Ecto.NoResultsError)
 
   """
-  def get_odd!(id), do: Repo.get!(Odd, id)
-  |> Repo.preload(:odd_type)
+  def get_odd!(id),
+    do:
+      Repo.get!(Odd, id)
+      |> Repo.preload(:odd_type)
 
   @doc """
   Creates a odd.

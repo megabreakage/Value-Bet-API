@@ -8,14 +8,15 @@ defmodule V8betApiWeb.BetController do
 
   def index(conn, _params) do
     bets = Bets.list_bets()
+    IO.inspect(bets)
     render(conn, :index, bets: bets)
   end
 
   def create(conn, %{"bet" => bet_params}) do
-    with {:ok, %Bet{} = bet} <- Bets.create_bet(bet_params) do
+    with {:ok, bet} <- Bets.create_bet(bet_params) do
       conn
       |> put_status(:created)
-      |> put_resp_header("location", ~p"/api/bets/#{bet}")
+      # |> put_resp_header("location", ~p"/api/bets/#{bet}")
       |> render(:show, bet: bet)
     end
   end

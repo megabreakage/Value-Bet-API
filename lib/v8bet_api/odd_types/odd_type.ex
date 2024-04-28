@@ -9,7 +9,7 @@ defmodule V8betApi.OddTypes.OddType do
     field :deleted_at, :utc_datetime
     field :name, :string
 
-    has_many :odds, V8betApi.Odds.Odd
+    # has_many :odds, V8betApi.Odds.Odd
 
     timestamps(type: :utc_datetime)
   end
