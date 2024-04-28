@@ -1,18 +1,72 @@
-# V8betApi
+---
+Name: V8BET APIs,
+URL: http://localhost:4000
+Authors: Martin Njuguna.
+Initial Date: 15 April 2024.
+---
 
-To start your Phoenix server:
+# [V8BET APIs](http://localhost:4000)
 
-  * Run `mix setup` to install and setup dependencies
-  * Start Phoenix endpoint with `mix phx.server` or inside IEx with `iex -S mix phx.server`
+Practial Trial by Value8!
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+---
 
-Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
+## Installation
 
-## Learn more
+Built on Elixir's Phoenix Framework, and sits on MYSQL Database.
 
-  * Official website: https://www.phoenixframework.org/
-  * Guides: https://hexdocs.pm/phoenix/overview.html
-  * Docs: https://hexdocs.pm/phoenix
-  * Forum: https://elixirforum.com/c/phoenix-forum
-  * Source: https://github.com/phoenixframework/phoenix
+### a. Pre-requisites
+
+For a complete and successful installation ensure your machine is ready with the following applications. You can find the installation processes for all environments (Windows, Linux & MacOs) from online documentation.
+
+1. Elixir 1.14.\* or later
+2. MYSQL instance
+
+### b. Installation Steps
+
+Follow the steps below to successfully intall the application.
+
+1. Clone project repository _(make sure you have the right permissions)_ ,
+
+    ```bash
+    git@github.com:megabreakage/Value-Bet-API.git
+    ```
+
+2. Create a new git branch from master using this command
+
+    ```bash
+    git checkout -b <your-new-branch-name>
+    ```
+
+5. Create a Database on your local/remote/ server or machine and call it **v8bet_api_dev**,
+6. Open your **devs.exs** file in **config** folder and use the credentials used in creating your database to update; _`username`_, _`password`_ & _`database`_ . Remember to save the **dev.exs** file,
+7. Run the following command to set up your application, create database and run migrations.
+
+    ```bash
+    mix get.deps
+    ```
+    
+    ```bash
+    mix ecto.create
+    ```
+
+    ```bash
+    mix ecto.migrate
+    ```
+
+8. Start your application by running the following command
+
+    - Open terminal one and run this command:
+
+        ```bash
+        iex -S mix phx.server
+        ```
+
+9. Access your APIs via the IP generated e.g [127.0.0.1:4000](127.0.0.1:4000) or [localhost:4000](localhost:8000).
+
+---
+
+Best Regards,
+
+**Martin Njuguna.**
+
