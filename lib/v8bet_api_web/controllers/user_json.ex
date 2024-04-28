@@ -16,20 +16,20 @@ defmodule V8betApiWeb.UserJSON do
     %{data: user}
   end
 
-  defp data(%User{} = user) do
-    %{
-      id: user.id,
-      firstname: user.firstname,
-      lastname: user.lastname,
-      msisdn: user.msisdn,
-      account: data(user.account)
-    }
-  end
+  # defp data(%User{} = user) do
+  #   %{
+  #     id: user.id,
+  #     firstname: user.firstname,
+  #     lastname: user.lastname,
+  #     msisdn: user.msisdn,
+  #     account: data(user.account)
+  #   }
+  # end
 
-  defp data(%Account{} = account) do
-    %{
-      id: account.id,
-      email: account.email
-    }
-  end
+  # defp data(%Account{} = account) do
+  #   %{
+  #     id: account.id,
+  #     email: account.email
+  #   }
+  # end
 end
